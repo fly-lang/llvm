@@ -72,7 +72,6 @@ jobs:
             -DLLVM_BUILD_LLVM_DYLIB=ON \
             -DLLVM_ENABLE_LIBXML2=OFF \
             -DLLVM_ENABLE_ZSTD=OFF \
-            -DLLVM_ENABLE_TERMINFO=OFF \
             -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0 \
             -DCMAKE_OSX_ARCHITECTURES=arm64 \
             -DCLANG_ENABLE_ARCMT=OFF \
@@ -85,7 +84,8 @@ jobs:
             -DLLDB_ENABLE_LIBEDIT=OFF \
             -DLLDB_ENABLE_LZMA=OFF \
             -DLLDB_ENABLE_LIBXML2=OFF \
-            -DLLDB_USE_SYSTEM_DEBUGSERVER=ON \n            -DLLDB_INCLUDE_TESTS=OFF
+            -DLLDB_USE_SYSTEM_DEBUGSERVER=ON \
+            -DLLDB_INCLUDE_TESTS=OFF
           cmake --build . --config $BUILD_TYPE --target install
 
       # The package must run on a Mac without Homebrew: any library resolved
