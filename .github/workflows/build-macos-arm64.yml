@@ -56,6 +56,10 @@ jobs:
           # unless pinned OFF — pin them ALL so the shipped lldb is fully
           # self-contained (no python/libedit/curses on user machines).
           # LLDB_ENABLE_LIBXML2 is distinct from LLVM_ENABLE_LIBXML2: pin both.
+          # macOS: lldb launches processes through debugserver, which must be
+          # signed with Apple entitlements to debug anything -- so use the one
+          # Xcode ships (copied into the package) instead of building ours, whose
+          # CMake project (ASM-ATT) does not even configure with current Xcode.
           cmake $GITHUB_WORKSPACE/src/llvm \
             -G Ninja \
             -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
@@ -81,7 +85,7 @@ jobs:
             -DLLDB_ENABLE_LIBEDIT=OFF \
             -DLLDB_ENABLE_LZMA=OFF \
             -DLLDB_ENABLE_LIBXML2=OFF \
-            -DLLDB_INCLUDE_TESTS=OFF
+            -DLLDB_USE_SYSTEM_DEBUGSERVER=ON \n            -DLLDB_INCLUDE_TESTS=OFF
           cmake --build . --config $BUILD_TYPE --target install
 
       # The package must run on a Mac without Homebrew: any library resolved
