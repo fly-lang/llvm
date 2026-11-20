@@ -33,11 +33,12 @@ jobs:
             exit 1
           fi
 
-      # The sources: the Fly fork of LLVM, branch fly-llvm-<version>.
+      # The sources: upstream LLVM at its release tag, unmodified (Fly needs no
+      # patch, only the CMake options below).
       - uses: actions/checkout@v4
         with:
-          repository: fly-lang/llvm-project
-          ref: fly-llvm-${{ env.VERSION }}
+          repository: llvm/llvm-project
+          ref: llvmorg-${{ env.VERSION }}
           path: src
           fetch-depth: 1
 
