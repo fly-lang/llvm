@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  VERSION: 20.1.8
+  VERSION: 22.1.8
   BUILD_DIR: build
   BUILD_TYPE: Release
   INSTALL_PATH: ${{github.workspace}}/install/llvm
@@ -69,7 +69,7 @@ jobs:
             -DLLVM_INCLUDE_BENCHMARKS=OFF \
             -DLLVM_PARALLEL_LINK_JOBS=1 \
             -DLLVM_ENABLE_LIBXML2=OFF \
-            -DCLANG_ENABLE_ARCMT=OFF \
+            -DCLANG_ENABLE_OBJC_REWRITER=OFF \
             -DCLANG_ENABLE_STATIC_ANALYZER=OFF \
             -DCLANG_BUILD_TOOLS=OFF \
             -DLLDB_ENABLE_PYTHON=OFF \

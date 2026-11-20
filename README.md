@@ -16,6 +16,13 @@ started). The fork never changed LLVM's code — its branches only added workflo
 and it stays, **archived**, because Fly 0.14.8 and the seeds up to 0.13.18 download
 their LLVM from its releases.
 
+## Branches
+
+- **`main`** — the workflows for the next LLVM version (`VERSION` in each workflow):
+  now **22.1.8**, the last point release of the 22 series.
+- **`release/<version>`** — the workflows exactly as they built that version's
+  releases, kept to rebuild or inspect them: `release/20.1.8`.
+
 ## Releases
 
 | Release | Asset | Platform |
@@ -23,6 +30,9 @@ their LLVM from its releases.
 | `v20.1.8-linux-x86_64` | `llvm-20.1.8-x86_64-linux-gnu.tar.gz` | Linux x86_64 |
 | `v20.1.8-win-x64` | `llvm-20.1.8-win-x64.zip` | Windows x64 |
 | `v20.1.8-macos-aarch64` | `llvm-20.1.8-aarch64-apple-darwin.tar.gz` | macOS arm64 (Apple Silicon), macOS 13+ |
+
+22.1.8 releases follow the same names (`v22.1.8-<platform>`) once the `main` workflows
+are run.
 
 The 20.1.8 Linux and Windows packages were built in the fork (same sources as the
 upstream tag) and copied here **byte for byte**:
